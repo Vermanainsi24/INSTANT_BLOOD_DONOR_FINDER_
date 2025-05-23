@@ -1,22 +1,44 @@
+import React, { useEffect, useState } from 'react';
+import { auth } from '../firebase/firebase';
+import { onAuthStateChanged, signOut } from 'firebase/auth';
+import { useNavigate, Link } from 'react-router-dom'; // ✅ Added Link
+import Navbar from '../components/Navbar';
+import donorImage from '../assets/home3.png'; // ✅ Import your background image
 
-import { Link } from "react-router-dom";
- // adjust path if needed
-import donorImage from "../assets/home3.png";
-import LandingNavbar from "./LandingNavbar"
+function AdminHomePage() {
+  const [user, setUser] = useState(null);
+  const navigate = useNavigate();
 
-const LandingPage = () => {
+  useEffect(() => {
+    const unsubscribe = onAuthStateChanged(auth, (currentUser) => {
+      if (currentUser) {
+        setUser(currentUser);
+      } else {
+        navigate('/login'); // Redirect to login if not authenticated
+      }
+    });
+    return () => unsubscribe();
+  }, [navigate]);
+
+  const handleLogout = () => {
+    signOut(auth).then(() => navigate('/login'));
+  };
+
+  if (!user) return <p className="text-center mt-10 text-gray-600">Loading...</p>;
+
   return (
     <div
       className="min-h-screen bg-gray-100 font-sans"
       style={{
         backgroundImage: `url(${donorImage})`,
-        backgroundSize: "cover",
-        backgroundPosition: "center",
-        backgroundRepeat: "no-repeat",
+        backgroundSize: 'cover',
+        backgroundPosition: 'center',
+        backgroundRepeat: 'no-repeat',
       }}
     >
       {/* Navbar */}
-      <LandingNavbar />
+      <Navbar onLogout={handleLogout} />
+
 
       {/* Hero Section */}
       <header className="py-20 sm:py-40 h-[70vh] flex items-center px-4 sm:px-10 text-white">
@@ -39,6 +61,6 @@ const LandingPage = () => {
       </header>
     </div>
   );
-};
+}
 
-export default LandingPage;
+export default AdminHomePage;
