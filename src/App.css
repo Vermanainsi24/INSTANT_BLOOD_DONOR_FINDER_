@@ -1,0 +1,49 @@
+
+.neumorphism {
+  background:rgb(227, 105, 105);
+  /* box-shadow: 4px 3px 7px #c5a5a7, -10px -10px 20px #ffffff; */
+  border-radius: 20px;
+  padding: 20px;
+  opacity: 0.8;
+  box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
+  box-shadow: rgba(175, 54, 54, 0.616) 0px 4px 8px -2px, rgba(216, 84, 84, 0.89) 0px 0px 0px 1px;
+  transition: all 0.3s ease;
+  cursor: pointer;
+  
+}
+.nav-shadow{
+  box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
+  box-shadow: rgba(0, 0, 0, 0.07) 0px 1px 1px, rgba(0, 0, 0, 0.07) 0px 2px 2px, rgba(0, 0, 0, 0.07) 0px 4px 4px, rgba(0, 0, 0, 0.07) 0px 8px 8px, rgba(0, 0, 0, 0.07) 0px 16px 16px;
+
+  /* background:rgba(255, 0, 0, 0.14); */
+}
+.donor-shadow{
+  box-shadow: rgba(0, 0, 0, 0.1) 0px 1px 3px 0px, rgba(0, 0, 0, 0.06) 0px 1px 2px 0px;
+  box-shadow: rgba(60, 64, 67, 0.3) 0px 1px 2px 0px, rgba(60, 64, 67, 0.15) 0px 2px 6px 2px;
+
+}
+
+/* Add this to your App.css file */
+
+/* Media queries for responsiveness */
+
+/* Small screens (max-width: 768px) */
+@media (max-width: 768px) {
+  .hero-section {
+    padding: 20px;
+  }
+  .hero-section h1 {
+    font-size: 24px;
+  }
+  .hero-section p {
+    font-size: 16px;
+  }
+  .nav-items {
+    flex-direction: column;
+  }
+  .nav-items li {
+    margin-bottom: 10px;
+  }
+}
+
+/* Medium screens (max-width: 
